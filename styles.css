@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* ====================== */
+
+.header {
+    padding-top: 50px;
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.favoritesBtn {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.searchIcon::after {
+  content: "\01F50D";
+  display: block;
+  font-size: 20px;
+}
+
+
+
+.searchWrapper {
+  display: flex;
+justify-content: center;
+}
+
+.recentSearches{
+display: flex;
+justify-content: center;
+}
+
+/* ========= loadMoreBtn ========== */
+.loadMoreBtn{
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 50px;
+border: none;
+border-radius: 5px;
+  background-color: rgb(127, 127, 245);
+}
+
+/* ===== dynamic classes ==== */
+
+.is-hidden {
+  display: none;
+}
+
+.emptyProperties{
+  text-align: center;
+  color: blue;
+  font-size: 20px;
+}
