@@ -9,8 +9,8 @@ const loadMoreBtn = new LoadMoreBtn({
 });
 
 refs.searchBtn.addEventListener("click", searchFormOnClickHandler);
-refs.searchForm.addEventListener("keyup", e => {
-  if (e.key === "Enter") {
+refs.searchForm.addEventListener("keyup", ({key}) => {
+  if (key === "Enter") {
     searchFormOnClickHandler(refs.searchForm.value);
   }
 });
