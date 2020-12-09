@@ -19,7 +19,7 @@ export function getAllBeer(allBeer) {
     return acc;
   }, "");
 
-  return (refs.beerContainer.innerHTML = markup);
+    return (refs.beerContainer.insertAdjacentHTML("beforeend", markup));
 }
 
 export function emptyBeerList() {

@@ -8,11 +8,18 @@ dropdownWrapper.innerHTML = `
 
 const dropdownContent = document.querySelector(".dropdownContent");
 
-refs.searchForm.addEventListener("focus", getRecentSearchDropdown);
+refs.searchForm.addEventListener("mouseenter", () => {
+    if (refs.searchForm.value.length >= 1) {
+        dropdownContent.classList.remove("show");
+    } else {
+        dropdownContent.innerHTML = ""
+        getRecentSearchDropdown()
+    }
+});
 
 function getRecentSearchDropdown() {
-  dropdownContent.classList.add("show");
-  dropdownFunction();
+        dropdownContent.classList.add("show");
+        dropdownFunction();
 }
 
 document.addEventListener("click", ({ target }) => {
