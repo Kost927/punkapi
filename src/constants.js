@@ -1,1 +1,20 @@
-export const IMAGE_URL = "https://p7.hiclipart.com/preview/1005/240/954/brewdog-craft-beer-for-the-people-brewdog-craft-beer-for-the-people-ale-punk-ipa-beer-thumbnail.jpg";
+export const IMAGE_URL =
+  "https://p7.hiclipart.com/preview/1005/240/954/brewdog-craft-beer-for-the-people-brewdog-craft-beer-for-the-people-ale-punk-ipa-beer-thumbnail.jpg";
+export const FAVORITES_COUNT__CLASS = ".favoritesCount";
+export const ADD_TO_FAVORITE_BTN__CLASS = "addToFavoriteBtn";
+export const DOT_ADD_TO_FAVORITE_BTN__CLASS = ".addToFavoriteBtn";
+export const ADD_TO_FAVORITE_BTN_ADDED__CLASS = "addToFavoriteBtn-added";
+export const SPACE_ADD_TO_FAVORITE_BTN_ADDED__CLASS = " addToFavoriteBtn-added";
+export const REMOVE_TO_FAVORITES_BTN__CLASS = "removeFromFavoritesBtn";
+export const REMOVE = "Remove";
+export const REMOVE_MODE = "remove";
+export const ADD_MODE = "add";
+export const ADD_TO_FAVORITE__TEXT = "Add to favorites";
+export const DISABLED = "disabled";
+export const EMPTY_MODAL__TEXT = `<p class="emptyModal">Sorry, but you don't have any favorites beer</p>`;
+export const DATA_ACTION_LOAD_MORE = 'button[data-action="load-more"]';
+export const IS_HIDDEN = "is-hidden";
+export const IS_OPEN = "is-open";
+export const VISIBLE = "visible";
+export const SHOW = "show";
+export const SCROLL_UP_ACTIVE = "scrollUp--active";
