@@ -2,43 +2,46 @@ import api from "./api.js";
 import refs from "./refs.js";
 import { getAllBeer, emptyBeerList } from "./beerList.js";
 import LoadMoreBtn from "./loadMoreBtn.js";
+import { storage } from "./storage.js";
+import { DATA_ACTION_LOAD_MORE } from "./constants.js";
 
-export let recentSearchArray = [];
+export let allBeerArray = [];
 
 const loadMoreBtn = new LoadMoreBtn({
-  selector: 'button[data-action="load-more"]',
+  selector: DATA_ACTION_LOAD_MORE,
   hidden: true
 });
 
 refs.searchBtn.addEventListener("click", searchFormOnClickHandler);
 refs.searchForm.addEventListener("keyup", ({ key }) => {
   if (key === "Enter") {
-    searchFormOnClickHandler(refs.searchForm.value);
+    searchFormOnClickHandler();
   }
 });
 
-loadMoreBtn.refs.button.addEventListener("click", fetchBeer);
+loadMoreBtn.refs.button.addEventListener("click", () => fetchBeer(false));
 
-export function searchFormOnClickHandler() {
+export function searchFormOnClickHandler(isClear = false) {
   api.query = refs.searchForm.value;
 
   refs.searchForm.value >= 1;
   if (refs.searchForm.value.length > 0) {
-    recentSearchArray.unshift(refs.searchForm.value);
+    storage.addRecent(refs.searchForm.value);
   }
   clearArticlesContainer();
   api.resetPage();
-  fetchBeer();
+  fetchBeer(isClear);
   refs.searchForm.value = "";
 }
 
-function fetchBeer() {
+export function fetchBeer(isClear = false) {
   loadMoreBtn.disable();
 
   api.fetchBeer().then(allBeer => {
-    console.log(allBeer);
     if (allBeer.length >= 1) {
-      getAllBeer(allBeer);
+      getAllBeer(allBeer, isClear);
+      allBeerArray = allBeer;
+      storage.setAllData(allBeer);
       loadMoreBtn.show();
       loadMoreBtn.enable();
     } else {

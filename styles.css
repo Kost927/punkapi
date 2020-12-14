@@ -32,11 +32,11 @@ dd {
   padding-top: 50px;
 }
 
-.headerTitle{
+.headerTitle {
   margin-bottom: 30px;
 }
 
-.searchForm{
+.searchForm {
   margin-right: 10px;
 }
 
@@ -87,6 +87,7 @@ dd {
   font-size: 30px;
   color: rgb(228, 87, 36);
   margin-bottom: 30px;
+  cursor: pointer;
 }
 
 .beerABV {
@@ -209,4 +210,86 @@ dd {
 
 .show {
   display: block;
+}
+
+/* =========== favorites =========== */
+.addToFavoriteBtn-added {
+  background-color: red;
+}
+
+.emptyModal {
+  font-size: 40px;
+}
+
+/* ================ popup modal ========= */
+
+.lightbox {
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lightbox.is-open {
+  display: block;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+.backdrop {
+  position: fixed;
+  background-color: rgba(128, 128, 128, 0.7);
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 30px 20px;
+}
+
+.close-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  top: 20px;
+  right: 22px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.icon-wrapper:hover {
+  cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.js-modal-info {
+  background: #e5e5e5;
+  border-radius: 8px;
+  padding: 20px;
+
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.modal-wrapper {
+  background-color: cornsilk;
+  padding: 15px;
+  /* border-radius: 20px; */
+  height: 700px;
+  width: 700px;
+  overflow-y: scroll;
 }

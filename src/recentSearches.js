@@ -1,7 +1,10 @@
 import refs from "./refs.js";
-import { recentSearchArray, searchFormOnClickHandler } from "./index.js";
+import { searchFormOnClickHandler } from "./index.js";
+import { storage } from "./storage.js";
+import { SHOW } from "./constants.js";
 
 const dropdownWrapper = document.querySelector(".dropdown");
+
 dropdownWrapper.innerHTML = `
             <div class="dropdownContent"></div>
 `;
@@ -9,29 +12,28 @@ dropdownWrapper.innerHTML = `
 const dropdownContent = document.querySelector(".dropdownContent");
 
 refs.searchForm.addEventListener("mouseenter", () => {
-    if (refs.searchForm.value.length >= 1) {
-        dropdownContent.classList.remove("show");
-    } else {
-        dropdownContent.innerHTML = ""
-        getRecentSearchDropdown()
-    }
+  if (refs.searchForm.value.length >= 1) {
+    dropdownContent.classList.remove(SHOW);
+  } else {
+    dropdownContent.innerHTML = "";
+    getRecentSearchDropdown();
+  }
 });
 
 function getRecentSearchDropdown() {
-        dropdownContent.classList.add("show");
-        dropdownFunction();
+  dropdownContent.classList.add(SHOW);
+  dropdownFunction();
 }
 
 document.addEventListener("click", ({ target }) => {
   if (!refs.searchForm.contains(target)) {
-    dropdownContent.classList.remove("show");
+    dropdownContent.classList.remove(SHOW);
     dropdownContent.innerHTML = "";
   }
 });
 
 function dropdownFunction() {
-  const uniqueRecentSearchArray = [...new Set(recentSearchArray)];
-  const markup = uniqueRecentSearchArray.reduce((acc, recentSearchItem) => {
+  const markup = storage.getResentElements().reduce((acc, recentSearchItem) => {
     acc += `
         <p class="recentSearchBtn">${recentSearchItem}</p>
      `;
@@ -44,7 +46,7 @@ function dropdownFunction() {
     dropdownContent.addEventListener("click", ({ target }) => {
       if (target.classList.contains("recentSearchBtn")) {
         refs.searchForm.value = target.textContent;
-        searchFormOnClickHandler();
+        searchFormOnClickHandler(true);
       }
     });
   }
